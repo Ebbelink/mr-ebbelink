@@ -1,0 +1,65 @@
+<div class="uk-section">
+  <div class="uk-container uk-container-large">
+    <h1>Articles</h1>
+
+    <div class="uk-child-width-1-1 uk-hidden@m" uk-grid>
+      <div>
+        <a routerLink="/article/{{ article.id }}" routerLinkActive="active" *ngFor="let article of articles"
+          class="uk-link-reset">
+          <div class="uk-card uk-card-muted">
+            <div *ngIf="article.image" class="uk-card-media-top">
+              <img src="http://localhost:1337{{ article.image.url }}" alt="" height="100" />
+            </div>
+            <div class="uk-card-body">
+              <p id="category" *ngIf="article.category" class="uk-text-uppercase">
+                {{ article.category.name }}
+              </p>
+              <p id="title" class="uk-text-large">{{ article.title }}</p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="uk-child-width-1-2 uk-visible@m" uk-grid>
+      <div>
+        <a routerLink="/article/{{ article.id }}" routerLinkActive="active" *ngFor="let article of articlesLeft"
+          class="uk-link-reset">
+          <div class="uk-card uk-card-muted">
+            <p id="title" class="uk-text-large">{{ article.title }}</p>
+            <div *ngIf="article.image" class="uk-card-media-top">
+              <img src="http://localhost:1337{{ article.image.url }}" alt="" height="100" />
+            </div>
+            <div class="uk-card-body">
+              <p *ngIf="article.categories.length > 0" class="uk-text-uppercase">
+                | 
+                <span *ngFor="let category of article.categories">
+                   {{ category.name }} |
+                </span>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div>
+        <a routerLink="/article/{{ article.id }}" routerLinkActive="active" *ngFor="let article of articlesRight"
+          class="uk-link-reset">
+          <div class="uk-card uk-card-muted">
+            <p id="title" class="uk-text-large">{{ article.title }}</p>
+            <div *ngIf="article.image" class="uk-card-media-top">
+              <img src="http://localhost:1337{{ article.image.url }}" alt="" height="100" />
+            </div>
+            <div class="uk-card-body">
+              <p *ngIf="article.categories.length > 0" class="uk-text-uppercase">
+                | 
+                <span *ngFor="let category of article.categories">
+                   {{ category.name }} |
+                </span>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
