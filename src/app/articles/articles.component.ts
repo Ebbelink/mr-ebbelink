@@ -14,8 +14,21 @@ export class ArticlesComponent implements OnInit {
   data: any = {};
   loading = true;
   errors: any;
+
+  private _categories: string[] = [];
+  title = (): string => { return this._categories.length > 0 ? this._categories.join(" + ") : "Articles"; };
+
   articles: any[] = [];
   articlesLeft: any[] = [];
+  articlesLeftFunc = (): any[] => {
+    let tmpResult: any[] = [];
+    for (let i = 0; i < this.articles.length; i++) {
+      if (i % 2 === 0) {
+        this.articlesLeft?.push(this.articles?.[i]);
+      }
+    }
+    return tmpResult;
+  };
   articlesRight: any[] = [];
 
   private graphQlQuerySubscription: Subscription | undefined = undefined;
@@ -25,13 +38,13 @@ export class ArticlesComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       input => {
-        let tags = input.semicolonSeperatedCategories?.split("~") ?? [];
+        this._categories = input.semicolonSeperatedCategories?.split("~") ?? [];
 
         this.articles = [];
         this.articlesLeft = [];
         this.articlesRight = [];
 
-        this.retrieveArticles(tags);
+        this.retrieveArticles(this._categories);
       });
   }
 
