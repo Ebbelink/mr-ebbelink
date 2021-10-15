@@ -1,20 +1,42 @@
-.uk-nav-header > a{
-  font-size: 1.1em;
-  font-weight: bold;
+$nav-background-color: #fff !important;
+
+nav {
+  & a {
+    color: $nav-background-color;
+  }
+
+  & input {
+    color: $nav-background-color;
+
+    &::placeholder {
+      color: $nav-background-color;
+    }
+  }
 }
 
-.uk-navbar{
-  background-color: #e9e9e9 !important;
+#curved-corner-filler{
+  height: 32px;
+  background-image: linear-gradient(90deg, #d211f0, #4287f5) !important;
 }
 
-.uk-navbar-nav{
-  color: #202020   !important;
+.uk-navbar-dropdown.uk-open {
+  background-color: #4287f5;
 }
 
-#mobile-nav-modal{
+.uk-nav-header>a {
+  font-size: 1.3em;
+  font-weight: 525;
+}
+
+.uk-navbar {
+  background-image: linear-gradient(90deg, #d211f0, #4287f5) !important;
+  border-bottom-left-radius: 30px;
+}
+
+#mobile-nav-modal {
   top: 80px;
 
-  .uk-nav{
+  .uk-nav {
     padding-left: 20px;
   }
 }

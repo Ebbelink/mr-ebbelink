@@ -1,4 +1,4 @@
-<nav class="uk-navbar-container " uk-navbar="dropbar: true">
+<nav class="uk-navbar-container" uk-navbar="delay-hide: 1000; boundary-align: false; offset: -15; align: right;">
   <div class="uk-navbar-left search-toggle">
     <ul class="uk-navbar-nav">
       <li class="uk-active">
@@ -24,6 +24,36 @@
   </div>
 
 
+  <div class="uk-navbar-right uk-visible@m">
+    <ul *ngIf="navbar" class="uk-navbar-nav">
+      <li>
+        <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .search-toggle; animation: uk-animation-fade"
+          href="#"></a>
+      </li>
+      <li *ngFor="let mainNavItem of navbar.TopLevelNavItems">
+        <a routerLink="{{ mainNavItem.path }}" routerLinkActive="active" class="uk-link-reset">
+          {{ mainNavItem.title }}
+        </a>
+
+        <div *ngIf="mainNavItem.navItems.length > 0" class="uk-navbar-dropdown">
+          <ul class="uk-nav uk-navbar-dropdown-nav">
+            <div *ngFor="let dropdownItem of mainNavItem.navItems">
+              <li class="uk-active uk-nav-header">
+                <a routerLink="{{ dropdownItem.path }}" routerLinkActive="active" class="uk-link-reset">
+                  {{ dropdownItem.title }}
+                </a>
+              </li>
+              <li *ngFor="let childItem of dropdownItem.navItems">
+                <a routerLink="{{childItem.path}}" routerLinkActive="active" class="uk-link-reset">
+                  {{ childItem.title }}
+                </a>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
 
   <div class="uk-navbar-right uk-visible@m">
     <ul *ngIf="navbarItems" class="uk-navbar-nav">
@@ -133,3 +163,4 @@
   </div>
 
 </nav>
+<div id="curved-corner-filler"></div>

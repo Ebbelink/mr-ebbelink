@@ -1,0 +1,13 @@
+#page-core {
+  &:before {
+    content: "";
+    display: inline-block;
+    background-color: #fff;
+    color: white;
+    width: 100%;
+    height: 32px;
+    border-top-right-radius: 30px;
+    position: absolute;
+    margin-top: -32px;
+  }
+}

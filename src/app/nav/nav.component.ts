@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from "apollo-angular";
-import { NAVBAR_QUERY, navbarItem, NAVBAR_QUERY_RESULT } from '../apollo/queries/navbar';
+import { NAVBAR_QUERY, NavbarItem, NAVBAR_QUERY_RESULT, NAVBAR_QUERY_2_RESULT, NAVBAR_QUERY_2, Navbar } from '../apollo/queries/navbar';
 import { Subscription, pipe } from "rxjs";
 
 @Component({
@@ -9,11 +9,13 @@ import { Subscription, pipe } from "rxjs";
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-  navbarItems: navbarItem[] = [];
+  navbarItems: NavbarItem[] = [];
+  navbar: Navbar = new Navbar({});
   loading = true;
   errors: any;
 
   navbarQuerySubscription: Subscription | undefined = undefined;
+  navbarQuerySubscription2: Subscription | undefined = undefined;
 
   constructor(private apollo: Apollo) { }
 
@@ -24,6 +26,16 @@ export class NavComponent implements OnInit {
       })
       .valueChanges.subscribe(result => {
         this.navbarItems = result.data.navBarItems;
+        this.loading = result.loading;
+        this.errors = result.errors;
+      });
+
+      this.navbarQuerySubscription2 = this.apollo
+      .watchQuery<NAVBAR_QUERY_2_RESULT>({
+        query: NAVBAR_QUERY_2
+      })
+      .valueChanges.subscribe(result => {
+        this.navbar = new Navbar(result.data.navbar);
         this.loading = result.loading;
         this.errors = result.errors;
       });
