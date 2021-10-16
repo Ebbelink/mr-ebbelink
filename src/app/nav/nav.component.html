@@ -1,9 +1,10 @@
-<nav class="uk-navbar-container" uk-navbar="delay-hide: 1000; boundary-align: false; offset: -15; align: right;">
+<nav class="uk-navbar-container uk-visible@m"
+  uk-navbar="delay-hide: 1000; boundary-align: false; offset: -15; align: right;">
   <div class="uk-navbar-left search-toggle">
     <ul class="uk-navbar-nav">
       <li class="uk-active">
         <a routerLink="/" routerLinkActive="active" class="uk-link-reset">
-          Mr Ebbelink
+          {{ navbar.SiteName }}
         </a>
       <li class="uk-parent uk-visible@s"><a href="https://www.linkedin.com/in/niels-ebbelink/"
           uk-icon="icon: linkedin"></a></li>
@@ -31,13 +32,13 @@
           href="#"></a>
       </li>
       <li *ngFor="let mainNavItem of navbar.TopLevelNavItems">
-        <a routerLink="{{ mainNavItem.path }}" routerLinkActive="active" class="uk-link-reset">
-          {{ mainNavItem.title }}
+        <a routerLink="{{ mainNavItem.navItem.path }}" routerLinkActive="active" class="uk-link-reset">
+          {{ mainNavItem.navItem.title }}
         </a>
 
-        <div *ngIf="mainNavItem.navItems.length > 0" class="uk-navbar-dropdown">
+        <div *ngIf="mainNavItem.navItem.navItems.length > 0" class="uk-navbar-dropdown">
           <ul class="uk-nav uk-navbar-dropdown-nav">
-            <div *ngFor="let dropdownItem of mainNavItem.navItems">
+            <div *ngFor="let dropdownItem of mainNavItem.navItem.navItems">
               <li class="uk-active uk-nav-header">
                 <a routerLink="{{ dropdownItem.path }}" routerLinkActive="active" class="uk-link-reset">
                   {{ dropdownItem.title }}
@@ -54,113 +55,79 @@
       </li>
     </ul>
   </div>
+</nav>
 
-  <div class="uk-navbar-right uk-visible@m">
-    <ul *ngIf="navbarItems" class="uk-navbar-nav">
-      <li>
-        <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .search-toggle; animation: uk-animation-fade"
-          href="#"></a>
-      </li>
-      <li *ngFor="let mainNavItem of navbarItems">
-        <a routerLink="{{ mainNavItem.path }}" routerLinkActive="active" class="uk-link-reset">
-          {{ mainNavItem.title }}
-        </a>
+<!-- MOBILE NAVBAR -->
+<nav class="uk-navbar-container uk-hidden@m">
+  <div uk-navbar="delay-hide: 1000; boundary-align: false; offset: -15; align: right;">
+    <div class="uk-navbar-left">
+      <ul class="uk-navbar-nav">
+        <li class="uk-active">
+          <a routerLink="/" routerLinkActive="active" class="uk-link-reset">
+            {{ navbar.SiteName }}
+          </a>
+        <li class="uk-parent uk-visible@s"><a href="https://www.linkedin.com/in/niels-ebbelink/"
+            uk-icon="icon: linkedin"></a></li>
+        <li class="uk-parent uk-visible@s"><a href="https://github.com/Ebbelink" uk-icon="icon: github"></a></li>
+      </ul>
+    </div>
 
-        <div *ngIf="mainNavItem.nav_bar_items.length > 0" class="uk-navbar-dropdown">
-          <ul class="uk-nav uk-navbar-dropdown-nav">
-            <div *ngFor="let dropdownItem of mainNavItem.nav_bar_items">
-              <li class="uk-active uk-nav-header">
-                <a routerLink="{{ dropdownItem.path }}" routerLinkActive="active" class="uk-link-reset">
-                  {{ dropdownItem.title }}
-                </a>
-              </li>
-              <li *ngFor="let childItem of dropdownItem.nav_bar_items">
-                <a routerLink="{{childItem.path}}" routerLinkActive="active" class="uk-link-reset">
-                  {{ childItem.title }}
-                </a>
-              </li>
-            </div>
-          </ul>
-        </div>
-      </li>
-    </ul>
+    <div class="uk-navbar-right">
+      <ul *ngIf="navbar.TopLevelNavItems" class="uk-navbar-nav">
+        <li>
+          <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .search-toggle; animation: uk-animation-fade"
+            href="#"></a>
+        </li>
+        <a class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle="target: .nav-toggle; animation: uk-animation-fade"
+          href="#mobile-nav-modal" uk-toggle></a>
+      </ul>
+    </div>
   </div>
 
+  <div class="search-toggle" uk-grid hidden>
+    <div class="uk-width-1-5"></div>
+    <div class="search-bar uk-flex-1 uk-width-3-5">
+      <div class="uk-navbar-item uk-width-expand">
+        <form class="uk-search uk-search-navbar uk-width-1-1">
+          <input class="uk-search-input" type="search" placeholder="Search" autofocus>
+        </form>
+      </div>
 
+      <a class="uk-navbar-toggle" uk-close uk-toggle="target: .search-toggle; animation: uk-animation-fade"
+        href="#"></a>
+    </div>
+    <div class="uk-width-1-5"></div>
+  </div>
 
-  <div class="uk-navbar-right uk-hidden@m">
-    <ul *ngIf="navbarItems" class="uk-navbar-nav">
-      <li>
-        <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .search-toggle; animation: uk-animation-fade"
-          href="#"></a>
-      </li>
-      <a class="uk-navbar-toggle" uk-navbar-toggle-icon uk-toggle="target: .nav-toggle; animation: uk-animation-fade"
-        href="#mobile-nav-modal" uk-toggle></a>
+  <div id="mobile-nav-modal" class="uk-grid-match" uk-grid hidden>
+    <div class="uk-width-1-5"></div>
+    <div class="uk-width-3-5">
+      <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
 
-      <div id="mobile-nav-modal" class="uk-modal-full uk-background-secondary uk-light" uk-modal>
-        <button class="uk-modal-close-full uk-close-large" type="button" uk-close></button>
-        <div class="uk-width-5-6">
-          <ul class="uk-nav-default uk-nav-parent-icon" uk-nav="multiple: true">
-
-            <!-- top level nav items -->
-            <li [ngClass]="mainNavItem.nav_bar_items.length > 0 ? 'uk-parent' : ''" *ngFor="let mainNavItem of navbarItems">
-              <a routerLink="{{ mainNavItem.path }}" routerLinkActive="active" class="uk-link-reset">
-                {{mainNavItem.title}}
+        <li *ngFor="let mainNavItem of navbar.TopLevelNavItems"
+          [ngClass]="mainNavItem.navItem.navItems.length > 0 ? 'uk-parent' : ''">
+          <a routerLink="{{ mainNavItem.navItem.path }}" routerLinkActive="active" class="uk-link-reset">
+            {{mainNavItem.navItem.title}}
+          </a>
+          <ul class="uk-nav-sub" [hidden]="mainNavItem.navItem.navItems.length === 0">
+            <li *ngFor="let dropdownItem of mainNavItem.navItem.navItems">
+              <a routerLink="{{ dropdownItem.path }}" routerLinkActive="active" class="uk-link-reset">
+                {{dropdownItem.title}}
               </a>
-              <ul class="uk-nav-sub" [hidden]="mainNavItem.nav_bar_items.length === 0">
-                <!-- first level nav items -->
-                <li *ngFor="let dropdownItem of mainNavItem.nav_bar_items">
-                  <a routerLink="{{ dropdownItem.path }}" routerLinkActive="active" class="uk-link-reset">
-                    {{dropdownItem.title}}
+              <ul [hidden]="dropdownItem.navItems.length === 0">
+                <li *ngFor="let childItem of dropdownItem.navItems">
+                  <a routerLink="{{ childItem.path }}" routerLinkActive="active" class="uk-link-reset">
+                    {{childItem.title}}
                   </a>
-                  <ul [hidden]="dropdownItem.nav_bar_items.length === 0">
-                    <!-- bottom level nav items -->
-                    <li *ngFor="let childItem of dropdownItem.nav_bar_items">
-                      <a routerLink="{{ childItem.path }}" routerLinkActive="active" class="uk-link-reset">
-                        {{childItem.title}}
-                      </a>
-                    </li>
-                  </ul>
                 </li>
               </ul>
             </li>
           </ul>
-        </div>
-      </div>
-    </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="uk-width-1-5"></div>
   </div>
-
-
-
-
-
-  <div>
-    <ul class="nav-toggle" hidden>
-      <li *ngFor="let mainNavItem of navbarItems">
-        <a routerLink="{{ mainNavItem.path }}" routerLinkActive="active" class="uk-link-reset">
-          {{ mainNavItem.title }}
-        </a>
-
-        <div *ngIf="mainNavItem.nav_bar_items.length > 0" class="uk-navbar-dropdown">
-          <ul class="uk-nav uk-navbar-dropdown-nav">
-            <div *ngFor="let dropdownItem of mainNavItem.nav_bar_items">
-              <li class="uk-active uk-nav-header">
-                <a id="niels" routerLink="{{ dropdownItem.path }}" routerLinkActive="active"
-                  class="uk-link-reset">
-                  {{ dropdownItem.title }}
-                </a>
-              </li>
-              <li *ngFor="let childItem of dropdownItem.nav_bar_items">
-                <a routerLink="{{childItem.path}}" routerLinkActive="active" class="uk-link-reset">
-                  {{ childItem.title }}
-                </a>
-              </li>
-            </div>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
-
 </nav>
+
 <div id="curved-corner-filler"></div>

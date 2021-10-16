@@ -1,8 +1,15 @@
-$nav-background-color: #fff !important;
+$nav-background-color: #fff;
 
 nav {
+  background-image: linear-gradient(120deg, #d211f0, #4287f5) !important;
+  border-bottom-left-radius: 30px;
+
   & a {
-    color: $nav-background-color;
+    color: $nav-background-color !important;
+  }
+
+  & a::after{
+    color: $nav-background-color !important;
   }
 
   & input {
@@ -10,6 +17,26 @@ nav {
 
     &::placeholder {
       color: $nav-background-color;
+    }
+  }
+
+  & .search-bar{
+    display: flex;
+    background-color: white;
+    color: black !important;
+    border-radius: 2.5em;
+    margin-bottom: 20px;
+  
+    & a {
+      color: black !important;
+    }
+  
+    & input {
+      color: black;
+  
+      &::placeholder {
+        color: black;
+      }
     }
   }
 }
@@ -28,15 +55,12 @@ nav {
   font-weight: 525;
 }
 
-.uk-navbar {
-  background-image: linear-gradient(90deg, #d211f0, #4287f5) !important;
-  border-bottom-left-radius: 30px;
-}
-
 #mobile-nav-modal {
   top: 80px;
 
-  .uk-nav {
+  & .uk-nav {
     padding-left: 20px;
   }
+
+
 }
