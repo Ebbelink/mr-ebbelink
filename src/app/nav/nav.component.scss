@@ -8,7 +8,7 @@ nav {
     color: $nav-background-color !important;
   }
 
-  & a::after{
+  & a::after {
     color: $nav-background-color !important;
   }
 
@@ -20,20 +20,32 @@ nav {
     }
   }
 
-  & .search-bar{
+  & .search-bar {
     display: flex;
-    background-color: white;
-    color: black !important;
-    border-radius: 2.5em;
-    margin-bottom: 20px;
-  
+
+    // Style the search bar form
+    & form {
+      display: flex;
+      flex-direction: row;
+
+      background-color: white;
+      color: black !important;
+      border-radius: 2.5em;
+      padding-left: 20px;
+    }
+
+    // Reset the height of the toggle so that we don't get a massively high searh bar
+    & .uk-navbar-toggle {
+      min-height: 1px !important;
+    }
+
     & a {
       color: black !important;
     }
-  
+
     & input {
       color: black;
-  
+
       &::placeholder {
         color: black;
       }
@@ -41,7 +53,7 @@ nav {
   }
 }
 
-#curved-corner-filler{
+#curved-corner-filler {
   height: 32px;
   background-image: linear-gradient(90deg, #d211f0, #4287f5) !important;
 }
@@ -61,6 +73,4 @@ nav {
   & .uk-nav {
     padding-left: 20px;
   }
-
-
 }
