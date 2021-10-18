@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { Article, ARTICLE_QUERY, ARTICLE_QUERY_RESPONSE } from "../apollo/queries/articles";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-article",
@@ -33,7 +34,7 @@ export class ArticleComponent implements OnInit {
         this.queryResult = new Article(result.data.article);
 
         let tmp = this.queryResult.content.replace(/\!\[.*?\]\((.*?)\)/gm, function (searchvalue: any, newvalue: any) {
-          return searchvalue.replace(newvalue, "http://localhost:1337" + newvalue);
+          return searchvalue.replace(newvalue, environment.backendBaseUrl + newvalue);
         });
 
         this.queryResult.content = tmp;
