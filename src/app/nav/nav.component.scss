@@ -1,8 +1,7 @@
 $nav-background-color: #fff;
 
 nav {
-  background-image: linear-gradient(120deg, #d211f0, #4287f5) !important;
-  border-bottom-left-radius: 30px;
+  background: transparent !important;
 
   & a {
     color: $nav-background-color !important;
@@ -51,11 +50,6 @@ nav {
       }
     }
   }
-}
-
-#curved-corner-filler {
-  height: 32px;
-  background-image: linear-gradient(90deg, #d211f0, #4287f5) !important;
 }
 
 .uk-navbar-dropdown.uk-open {
