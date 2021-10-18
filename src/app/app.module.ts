@@ -9,6 +9,7 @@ import { ArticleModule } from './article/article.module';
 import { ArticlesModule } from './articles/articles.module';
 import { NavModule } from './nav/nav.module';
 import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
     MarkdownModule.forRoot(),
     ArticleModule,
     ArticlesModule,
-    NavModule
+    NavModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

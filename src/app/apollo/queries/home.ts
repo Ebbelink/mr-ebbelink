@@ -1,23 +1,29 @@
 import gql from "graphql-tag";
+import { AttentionZone } from "src/app/services/AttentionZoneService";
 
-const HOMEPAGE_QUERY = gql`
+export const HOMEPAGE_QUERY = gql`
 query homepageQuery{
   homepage{
     Title
+    Content
+    AttentionZone{
+      Header
+      SubHeader
+    }
   }  
 }
 `;
 
-type HomepageQueryResult = {
+export type HomepageQueryResult = {
   homepage: Homepage;
 }
 
-class Homepage {
+export class Homepage {
   Title: string = "";
-}
+  Content: string = "";
+  AttentionZone: AttentionZone = new AttentionZone();
 
-export {
-  HOMEPAGE_QUERY,
-  HomepageQueryResult,
-  Homepage
-};
+  constructor(data: Partial<Homepage>) {
+    Object.assign(this, data);
+  }
+}

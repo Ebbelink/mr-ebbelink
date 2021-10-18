@@ -5,6 +5,7 @@ import { Article, ARTICLE_QUERY, ARTICLE_QUERY_RESPONSE } from "../apollo/querie
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 import { environment } from "src/environments/environment";
+import { SanitizeMarkdown } from "../services/MarkdownSanitizer";
 
 @Component({
   selector: "app-article",
@@ -33,11 +34,9 @@ export class ArticleComponent implements OnInit {
       .valueChanges.subscribe(result => {
         this.queryResult = new Article(result.data.article);
 
-        let tmp = this.queryResult.content.replace(/\!\[.*?\]\((.*?)\)/gm, function (searchvalue: any, newvalue: any) {
-          return searchvalue.replace(newvalue, environment.backendBaseUrl + newvalue);
-        });
+        let urlFixedMarkdownContent = SanitizeMarkdown(this.queryResult.content);
 
-        this.queryResult.content = tmp;
+        this.queryResult.content = urlFixedMarkdownContent;
 
         this.loading = result.loading;
         this.errors = result.errors;

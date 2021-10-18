@@ -1,8 +1,9 @@
 <div id="attention-zone">
   <app-nav></app-nav>
-  <div class="uk-container">
-    <h1>Welcome to the internet</h1>
-    <p>I require your complete and absolute attention</p>
+  <div class="uk-container" *ngIf="attentionZoneData.Header || attentionZoneData.SubHeader">
+    <hr>
+    <h1 style="color: white !important">{{attentionZoneData.Header}}</h1>
+    <h2 style="color: white !important; margin-top: 0;">{{attentionZoneData.SubHeader}}</h2>
   </div>
 </div>
 <div id="attention-zone-downwards-curved-corner"></div>
