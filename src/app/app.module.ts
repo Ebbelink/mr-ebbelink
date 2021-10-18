@@ -10,6 +10,7 @@ import { ArticlesModule } from './articles/articles.module';
 import { NavModule } from './nav/nav.module';
 import { MarkdownComponent, MarkdownModule } from 'ngx-markdown';
 import { HomeModule } from './home/home.module';
+import { FooterModule } from './footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HomeModule } from './home/home.module';
     ArticleModule,
     ArticlesModule,
     NavModule,
-    HomeModule
+    HomeModule,
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
