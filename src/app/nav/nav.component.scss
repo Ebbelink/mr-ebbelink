@@ -50,6 +50,12 @@ nav {
       }
     }
   }
+
+  & .search-toggle{
+    & .uk-grid-margin{
+      margin-top: 0;
+    }
+  }
 }
 
 .uk-navbar-dropdown.uk-open {
