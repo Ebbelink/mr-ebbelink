@@ -4,6 +4,16 @@
 @import "../node_modules/uikit/dist/css/uikit-core.css";
 @import url("https://fonts.googleapis.com/css?family=Staatliches");
 
+app-root {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.all-except-footer {
+  flex: 1;
+}
+
 a {
   text-decoration: none;
 }
