@@ -12,10 +12,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build and push Docker image
       run: |
         dockerImageTag="madailei/mr-ebbelink-fe:$(date +%s)"
         echo $dockerImageTag
         docker build . --file Dockerfile --tag $dockerImageTag
-    - name: docker push
-      run: docker image push $dockerImageTag
+        docker image push $dockerImageTag
