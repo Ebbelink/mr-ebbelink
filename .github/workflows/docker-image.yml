@@ -1,5 +1,8 @@
 name: Docker Image CI
 
+env:
+  dockerImageTag: madailei/mr-ebbelink-fe:$(date +%s)
+  
 on:
   push:
     branches: [ main ]
@@ -13,4 +16,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag madailei/mr-ebbelink-fe:$(date +%s)
+      run: |
+        docker build . --file Dockerfile --tag {{dockerImageTag}}
+  
+  push:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: docker push
+        run: docker image push {{dockerImageTag}}
