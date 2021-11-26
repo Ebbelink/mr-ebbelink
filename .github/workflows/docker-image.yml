@@ -14,13 +14,8 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
-        echo "madailei/mr-ebbelink-fe:$(date +%s)" >> "${dockerImageTag}"
+        dockerImageTag="madailei/mr-ebbelink-fe:$(date +%s)"
         echo $dockerImageTag
-        docker build . --file Dockerfile --tag "${dockerImageTag}"
-  
-  push:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: docker push
-        run: docker image push "${dockerImageTag}"
+        docker build . --file Dockerfile --tag $dockerImageTag
+    - name: docker push
+      run: docker image push $dockerImageTag
