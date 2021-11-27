@@ -11,6 +11,7 @@ on:
         required: true
       destinationTag:
         description: Destination tag
+        required: true
       tagAsLatest:
         description: Add the `latest` tag to this image
         type: boolean
