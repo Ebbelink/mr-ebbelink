@@ -7,12 +7,13 @@ on:
   workflow_dispatch:
     inputs:
       sourceTag:
-        description: The tag of the image to retag (e.g. `continuous-2021-11-27-epoch-1638028004` from ${{ env.IMAGE_NAME }}:continuous-2021-11-27-epoch-1638028004)
+        description: The tag of the image (e.g. madailei/mr-ebbelink-fe:[SOURCE_TAG])
         required: true
       destinationTag:
-        description: The tag of the image to add to the sourceImage
+        description: Destination tag
       tagAsLatest:
         description: Add the `latest` tag to this image
+        type: boolean
 
 jobs:
 
