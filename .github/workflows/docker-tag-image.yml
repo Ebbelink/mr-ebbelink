@@ -23,9 +23,11 @@ jobs:
     steps:
     - name: Tag docker image
       run: |
-        echo "docker tag ${{ env.IMAGE_NAME }}:${{ github.event.inputs.sourceTag }} ${{ env.IMAGE_NAME }}:${{ github.event.inputs.destinationTag }}"
+        docker tag ${{ env.IMAGE_NAME }}:${{ github.event.inputs.sourceTag }} ${{ env.IMAGE_NAME }}:${{ github.event.inputs.destinationTag }}
+        
         if (${{ github.event.inputs.tagAsLatest }}); 
         then
-          echo "docker tag ${{ env.IMAGE_NAME }}:${{ github.event.inputs.sourceTag }} ${{ env.IMAGE_NAME }}:latest"
+          docker tag ${{ env.IMAGE_NAME }}:${{ github.event.inputs.sourceTag }} ${{ env.IMAGE_NAME }}:latest
         fi
-
+        
+        docker push ${{ env.IMAGE_NAME }} --all-tags
