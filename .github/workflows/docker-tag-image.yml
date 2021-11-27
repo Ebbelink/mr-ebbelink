@@ -1,0 +1,30 @@
+name: Tag Docker image
+
+env:
+  imageName: "madailei/mr-ebbelink-fe"
+
+on:
+  workflow_dispatch:
+    inputs:
+      sourceTag:
+        description: The tag of the image to retag (e.g. `continuous-2021-11-27-epoch-1638028004` from ${imageName}:continuous-2021-11-27-epoch-1638028004)
+        required: true
+      destinationTag:
+        description: The tag of the image to add to the sourceImage
+      tagAsLatest:
+        description: Add the `latest` tag to this image
+
+jobs:
+
+  tag:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Tag docker image
+      run: |
+        echo "docker tag ${imageName}:${destinationTag} ${IMAGE}:latest"
+        if ($tagAsLatest); 
+        then
+          echo "tag as latest"
+        fi
+
