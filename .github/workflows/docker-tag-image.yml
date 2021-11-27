@@ -23,6 +23,8 @@ jobs:
     steps:
     - name: Tag docker image
       run: |
+        docker login -u madailei -p ${{ secrets.DOCKER_SECRET }}
+        
         docker pull ${{ env.IMAGE_NAME }}:${{ github.event.inputs.sourceTag }} 
       
         docker tag ${{ env.IMAGE_NAME }}:${{ github.event.inputs.sourceTag }} ${{ env.IMAGE_NAME }}:${{ github.event.inputs.destinationTag }}
