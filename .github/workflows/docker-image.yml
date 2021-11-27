@@ -12,9 +12,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Docker secrets
+      with: # Set Docker secret as input
+        dockerSecret: ${{ secrets.DOCKER_SECRET }}  
     - name: Build and push Docker image
       run: |
         dockerImageTag="madailei/mr-ebbelink-fe:$(date +%s)"
         echo $dockerImageTag
         docker build . --file Dockerfile --tag $dockerImageTag
+        docker login -u madailei -p ${{dockerSecret}}
         docker image push $dockerImageTag
