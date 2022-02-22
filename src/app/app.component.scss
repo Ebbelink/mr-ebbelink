@@ -2,7 +2,7 @@
 
 #attention-zone {
   background-image: linear-gradient(120deg, $color-1, $color-2) !important;
-  border-bottom-left-radius: 30px;
+  border-bottom-left-radius: $nav-border-radius;
 
   & h1{
     margin: 0px;
@@ -13,8 +13,8 @@
 }
 
 #attention-zone-downwards-curved-corner {
-  height: 32px;
   background-image: linear-gradient(120deg, $color-1, $color-2) !important;
+  height: $nav-border-radius + 2;
 
   &:after {
     content: "";
@@ -22,8 +22,8 @@
     background-color: #fff;
     color: white;
     width: 100%;
-    height: 32px;
-    border-top-right-radius: 30px;
+    height: $nav-border-radius + 2;
+    border-top-right-radius: $nav-border-radius;
     position: absolute;
   }
 }

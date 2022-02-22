@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Wait for FE",
+      "type": "shell",
+      "windows": {
+        "command": "do {sleep 5} until ($(curl -TimeoutSec 5 http://localhost:4200/).StatusCode -eq 200)"
+      },
+      "group": "none",
+      "presentation": {
+        "reveal": "silent",
+        "panel": "new"
+      }
+    }
+  ]
+}

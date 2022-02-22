@@ -5,11 +5,27 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Open FE",
       "type": "pwa-chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
       "url": "http://localhost:4200",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}",
+      "preLaunchTask": "Wait for FE"
+    },
+    {
+      "name": "Serve FE",
+      "command": "ng serve",
+      "request": "launch",
+      "type": "node-terminal"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Stack start - Mr. Ebbelink",
+      "configurations": [
+        "Serve FE",
+        "Open FE"
+      ]
     }
   ]
 }

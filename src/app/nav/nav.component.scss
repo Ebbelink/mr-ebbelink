@@ -61,7 +61,12 @@ nav {
 }
 
 .uk-navbar-dropdown.uk-open {
-  background-color: #4287f5;
+  background-color: #ffffff;
+  border-radius: 0.45em;
+
+  & .uk-navbar-dropdown-nav a{
+    color: #000000 !important;
+  }
 }
 
 .uk-nav-header>a {

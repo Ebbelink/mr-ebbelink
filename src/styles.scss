@@ -47,6 +47,7 @@ h1 {
 #banner {
   margin: 20px;
   height: 800px;
+  border-top-right-radius: $nav-border-radius;
 }
 
 #editor {
