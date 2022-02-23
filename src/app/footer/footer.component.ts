@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  siteName: string = "monsieur ebbelink";
+  siteName: string = "MR EBBELINK";
 
   constructor() { }
 

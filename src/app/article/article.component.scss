@@ -1,2 +1,8 @@
 @import "../../variables.scss";
 
+#banner {
+  margin: 20px;
+  height: 800px;
+  border-top-right-radius: $nav-border-radius;
+}
+
