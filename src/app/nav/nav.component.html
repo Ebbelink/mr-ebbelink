@@ -1,6 +1,7 @@
 <nav class="uk-navbar-container uk-visible@m"
   uk-navbar="delay-hide: 1000; boundary-align: false; offset: -15; align: right;">
-  <div class="uk-navbar-left search-toggle">
+
+  <div class="uk-navbar-left">
     <ul class="uk-navbar-nav">
       <li class="uk-active">
         <a routerLink="/" routerLinkActive="active" class="uk-link-reset" style="font-size: 1.2em; font-weight: 900;">
@@ -21,14 +22,16 @@
       </form>
     </div>
 
-    <a class="uk-navbar-toggle" uk-close uk-toggle="target: .search-toggle; animation: uk-animation-fade" href="#"></a>
+    <!-- <a class="uk-navbar-toggle" uk-close uk-toggle="target: .search-toggle; animation: uk-animation-fade" href="#"></a> -->
   </div>
 
 
   <div class="uk-navbar-right uk-visible@m">
     <ul *ngIf="navbar" class="uk-navbar-nav">
       <li>
-        <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .search-toggle; animation: uk-animation-fade"
+        <a class="uk-navbar-toggle search-toggle" uk-search-icon uk-toggle="target: .search-toggle; animation: uk-animation-fade"
+          href="#"></a>
+        <a class="uk-navbar-toggle search-toggle" hidden uk-close uk-toggle="target: .search-toggle; animation: uk-animation-fade"
           href="#"></a>
       </li>
       <li *ngFor="let mainNavItem of navbar.TopLevelNavItems">
