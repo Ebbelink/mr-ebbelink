@@ -80,6 +80,7 @@ nav {
 .uk-navbar-dropdown.uk-open {
   background-color: #ffffff;
   border-radius: 0.45em;
+  box-shadow: $shadow;
 
   & .uk-navbar-dropdown-nav a {
     color: $text-color-primary !important;
