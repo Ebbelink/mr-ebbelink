@@ -1,29 +1,40 @@
 @import "../variables.scss";
 
 #attention-zone {
-  background-image: linear-gradient(120deg, $color-1, $color-2) !important;
-  border-bottom-left-radius: $nav-border-radius;
+  color: $text-color-primary;
 
-  & h1{
+  & h1,
+  & h2,
+  & h3,
+  & div {
+    color: $text-color-primary;
+  }
+
+  & h1 {
     margin: 0px;
   }
-  & h2{
+  & h2 {
     margin: 0 0 20px 40px;
   }
-}
 
-#attention-zone-downwards-curved-corner {
-  background-image: linear-gradient(120deg, $color-1, $color-2) !important;
-  height: $nav-border-radius + 2;
+  & .attention-zone-content{
+    background-image: linear-gradient(120deg, $color-1, $color-2) !important;
+    border-bottom-left-radius: $nav-border-radius;
+  }
 
-  &:after {
-    content: "";
-    display: inline-block;
-    background-color: #fff;
-    color: white;
-    width: 100%;
+  & .attention-zone-downwards-curved-corner {
+    background-image: linear-gradient(120deg, $color-1, $color-2) !important;
     height: $nav-border-radius + 2;
-    border-top-right-radius: $nav-border-radius;
-    position: absolute;
+  
+    &:after {
+      content: "";
+      display: inline-block;
+      background-color: #fff;
+      color: white;
+      width: 100%;
+      height: $nav-border-radius + 2;
+      border-top-right-radius: $nav-border-radius;
+      position: absolute;
+    }
   }
 }

@@ -1,31 +1,40 @@
 @import "../../variables.scss";
 
-$nav-background-color: #fff;
-
-.uk-search-input{
-  color: black !important;
-  background-color: white;
-  border-radius: 1em;
-  padding-left: 1em;
-  margin: 10px;
-}
-
 nav {
   background: transparent !important;
+  font-family: Staatliches;
+  color: $text-color-primary;
 
+  & h1,
   & a {
-    color: $nav-background-color !important;
+    color: $text-color-primary !important;
   }
 
   & a::after {
-    color: $nav-background-color !important;
+    color: $text-color-primary !important;
   }
 
   & input {
-    color: $nav-background-color;
+    color: $text-color-primary;
 
     &::placeholder {
-      color: $nav-background-color;
+      color: $text-color-primary;
+    }
+  }
+
+  & .uk-search-input {
+    color: #000000;
+    background-color: white;
+    border-radius: 1em;
+    padding-left: 1em;
+    margin: 10px;
+
+    @media only screen and (max-width: 960px) {
+      padding-left: 5px;
+    }
+
+    &::placeholder {
+      color: $text-color-contrast;
     }
   }
 
@@ -38,7 +47,7 @@ nav {
       flex-direction: row;
 
       background-color: white;
-      color: black !important;
+      color: $text-color-contrast !important;
       border-radius: 2.5em;
       padding-left: 20px;
     }
@@ -49,20 +58,20 @@ nav {
     }
 
     & a {
-      color: black !important;
+      color: $text-color-contrast !important;
     }
 
     & input {
-      color: black;
+      color: $text-color-contrast;
 
       &::placeholder {
-        color: black;
+        color: $text-color-contrast;
       }
     }
   }
 
-  & .search-toggle{
-    & .uk-grid-margin{
+  & .search-toggle {
+    & .uk-grid-margin {
       margin-top: 0;
     }
   }
@@ -72,12 +81,12 @@ nav {
   background-color: #ffffff;
   border-radius: 0.45em;
 
-  & .uk-navbar-dropdown-nav a{
-    color: #000000 !important;
+  & .uk-navbar-dropdown-nav a {
+    color: $text-color-contrast !important;
   }
 }
 
-.uk-nav-header>a {
+.uk-nav-header > a {
   font-size: 1.3em;
   font-weight: 525;
 }

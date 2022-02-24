@@ -1,13 +1,16 @@
 <div class="all-except-footer">
   <div id="attention-zone">
-    <app-nav></app-nav>
-    <div class="uk-container" *ngIf="attentionZoneData.Header || attentionZoneData.SubHeader">
-      <hr>
-      <h1 style="color: white !important">{{attentionZoneData.Header}}</h1>
-      <h2 style="color: white !important; margin-top: 0;">{{attentionZoneData.SubHeader}}</h2>
+    <div class="attention-zone-content">
+      <app-nav></app-nav>
+      <div class="uk-container"
+        *ngIf="attentionZoneData.Header || attentionZoneData.SubHeader">
+        <hr>
+        <h1>{{attentionZoneData.Header}}</h1>
+        <h2 style="margin-top: 0;">{{attentionZoneData.SubHeader}}</h2>
+      </div>
     </div>
+    <div class="attention-zone-downwards-curved-corner"></div>
   </div>
-  <div id="attention-zone-downwards-curved-corner"></div>
 
   <div id="page-core">
     <router-outlet></router-outlet>
