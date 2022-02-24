@@ -1,13 +1,13 @@
 @import "../variables.scss";
 
 #attention-zone {
-  color: $text-color-primary;
+  color: $text-color-contrast;
 
   & h1,
   & h2,
   & h3,
   & div {
-    color: $text-color-primary;
+    color: $text-color-contrast;
   }
 
   & h1 {

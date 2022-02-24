@@ -1,2 +1,13 @@
 @import "../../variables.scss";
 
+img{
+  opacity: 0.9;
+
+  &:hover {
+    opacity: 1.0;
+
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(0, 1.52, 0.56, 1);
+    transition-delay: 0s;
+  }
+}

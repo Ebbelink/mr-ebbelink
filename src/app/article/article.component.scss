@@ -4,6 +4,10 @@
   margin: 20px;
   height: 800px;
   border-top-right-radius: $nav-border-radius;
+
+  & h1 {
+    text-shadow: 6px 4px #00000091;
+  }
 }
 
 markdown ::ng-deep img {

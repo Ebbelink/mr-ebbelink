@@ -2,23 +2,23 @@
 
 nav {
   background: transparent !important;
-  font-family: Staatliches;
-  color: $text-color-primary;
+  font-family: $text-font-family-attention;
+  color: $text-color-contrast;
 
   & h1,
   & a {
-    color: $text-color-primary !important;
+    color: $text-color-contrast !important;
   }
 
   & a::after {
-    color: $text-color-primary !important;
+    color: $text-color-contrast !important;
   }
 
   & input {
-    color: $text-color-primary;
+    color: $text-color-contrast;
 
     &::placeholder {
-      color: $text-color-primary;
+      color: $text-color-contrast;
     }
   }
 
@@ -34,7 +34,7 @@ nav {
     }
 
     &::placeholder {
-      color: $text-color-contrast;
+      color: $text-color-primary;
     }
   }
 
@@ -62,10 +62,10 @@ nav {
     }
 
     & input {
-      color: $text-color-contrast;
+      color: $text-color-primary;
 
       &::placeholder {
-        color: $text-color-contrast;
+        color: $text-color-primary
       }
     }
   }
@@ -82,7 +82,7 @@ nav {
   border-radius: 0.45em;
 
   & .uk-navbar-dropdown-nav a {
-    color: $text-color-contrast !important;
+    color: $text-color-primary !important;
   }
 }
 

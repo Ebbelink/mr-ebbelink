@@ -3,8 +3,11 @@
 $footer-background-color: #311c77;
 
 footer {
+  font-family: $text-font-family-attention;
+  color: $text-color-contrast;
+
   background-color: $footer-background-color;
-  color: white;
+  
   height: 100px;
   width: 100%;
 
