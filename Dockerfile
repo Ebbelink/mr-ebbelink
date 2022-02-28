@@ -1,10 +1,12 @@
 ### STAGE 1: Build ###
 FROM node:12 AS build
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package.json yarn.lock ./
+# RUN npm install
+RUN yarn install
 COPY . .
-RUN $(npm bin)/ng build --prod
+# RUN $(npm bin)/ng build --prod
+RUN yarn build --prod
 
 RUN ls -la /app
 
