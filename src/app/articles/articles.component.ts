@@ -5,6 +5,7 @@ import { ARTICLES_FOR_TAG_QUERY, ARTICLES_QUERY } from "../apollo/queries/articl
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
 import { AttentionZone, AttentionZoneService } from "../services/AttentionZoneService";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-articles",
@@ -34,9 +35,11 @@ export class ArticlesComponent implements OnInit {
 
   private graphQlQuerySubscription: Subscription | undefined = undefined;
 
+  readonly backendOrigin: string = environment.backendOrigin;
+
   constructor(private apollo: Apollo, private route: ActivatedRoute, attentionZoneService: AttentionZoneService) {
     attentionZoneService.changeAttentionZone(new AttentionZone());
-   }
+  }
 
   ngOnInit() {
     this.route.params.subscribe(

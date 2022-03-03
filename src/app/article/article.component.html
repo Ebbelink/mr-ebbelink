@@ -1,8 +1,6 @@
 <div id="banner"
   class="banner-overlay uk-height-small uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-light uk-padding"
-  [style.background-image]="
-    'url(http://localhost:1337' + queryResult.image.url + ')'
-  " uk-img>
+  [style.background-image]="'url(' + backendOrigin + queryResult.image.url + ')'" uk-img>
   <h1>{{ queryResult.title }}</h1>
 </div>
 

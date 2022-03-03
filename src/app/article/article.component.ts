@@ -4,6 +4,7 @@ import { Article, ARTICLE_QUERY, ARTICLE_QUERY_RESPONSE } from "../apollo/querie
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
 import { SanitizeMarkdown } from "../services/MarkdownSanitizer";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-article",
@@ -14,6 +15,8 @@ export class ArticleComponent implements OnInit {
   queryResult: Article = new Article({});
   loading = true;
   errors: any;
+
+  readonly backendOrigin: string = environment.backendOrigin;
 
   private markdownImageRegex: RegExp = /\!\[.*?\]\((.*?)\)/;
 
