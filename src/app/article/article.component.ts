@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
 import { Article, ARTICLE_QUERY, ARTICLE_QUERY_RESPONSE } from "../apollo/queries/articles";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
-import { environment } from "src/environments/environment";
 import { SanitizeMarkdown } from "../services/MarkdownSanitizer";
 
 @Component({
