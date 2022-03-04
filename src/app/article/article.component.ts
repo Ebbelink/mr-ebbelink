@@ -1,11 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Apollo } from "apollo-angular";
-import gql from "graphql-tag";
 import { Article, ARTICLE_QUERY, ARTICLE_QUERY_RESPONSE } from "../apollo/queries/articles";
 import { ActivatedRoute } from "@angular/router";
 import { Subscription } from "rxjs";
-import { environment } from "src/environments/environment";
 import { SanitizeMarkdown } from "../services/MarkdownSanitizer";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-article",
@@ -16,6 +15,8 @@ export class ArticleComponent implements OnInit {
   queryResult: Article = new Article({});
   loading = true;
   errors: any;
+
+  readonly backendOrigin: string = environment.backendOrigin;
 
   private markdownImageRegex: RegExp = /\!\[.*?\]\((.*?)\)/;
 
